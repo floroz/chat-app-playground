@@ -31,4 +31,41 @@ userSchema.statics.createUser = async function (firstName, lastName, type) {
   }
 };
 
+userSchema.statics.getUserById = async function (id) {
+  try {
+    const user = await this.findOne({ _id: id });
+
+    if (!user) {
+      throw { error: "No user with this id found" };
+    }
+
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
+userSchema.statics.getAllUsers = async function () {
+  try {
+    const users = await this.find();
+
+    if (!users && users !== []) {
+      throw { error: "No users found" };
+    }
+
+    return users;
+  } catch (error) {
+    throw error;
+  }
+};
+
+userSchema.statics.deleteByUserById = async function (id) {
+  try {
+    const result = await this.remove({ _id: id });
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export default mongoose.model("User", userSchema);
