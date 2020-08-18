@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
     "@withvoid/make-validation": "^1.0.5",
     "cors": "^2.8.5",
